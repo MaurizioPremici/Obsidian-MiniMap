@@ -1,0 +1,27 @@
+{
+  "name": "obsidian-minimap-local",
+  "version": "1.0.1",
+  "description": "Interactive document minimap for the Obsidian desktop editor.",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node esbuild.config.mjs",
+    "build": "tsc --noEmit --skipLibCheck && node esbuild.config.mjs production",
+    "typecheck": "tsc --noEmit --skipLibCheck"
+  },
+  "keywords": [
+    "obsidian",
+    "minimap",
+    "codemirror",
+    "navigation"
+  ],
+  "author": "noShell",
+  "license": "MIT",
+  "devDependencies": {
+    "@codemirror/view": "^6.38.0",
+    "@types/node": "^22.15.17",
+    "esbuild": "^0.25.5",
+    "obsidian": "latest",
+    "typescript": "^5.8.3"
+  }
+}

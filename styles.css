@@ -1,0 +1,104 @@
+.cm-editor.obsidian-minimap-enabled {
+  --obsidian-minimap-width: 112px;
+  position: relative;
+}
+
+/* Reserve editor space so the minimap never overlays the note. */
+.cm-editor.obsidian-minimap-enabled > .cm-scroller {
+  margin-right: calc(
+    var(--obsidian-minimap-width) + 7px
+  );
+  margin-left: 0;
+}
+
+.obsidian-minimap-host .cm-scroller {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/*
+ * MiniMap replaces the visible vertical scrollbar while native
+ * scrolling remains available to the mouse, trackpad, and keyboard.
+ */
+.obsidian-minimap-host .cm-scroller::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.obsidian-minimap-host {
+  --obsidian-minimap-width: 112px;
+  position: relative;
+}
+
+.obsidian-minimap {
+  position: absolute;
+  z-index: 8;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: auto;
+  width: var(--obsidian-minimap-width);
+  overflow: hidden;
+  border-right: 0;
+  border-left: 1px solid var(--background-modifier-border);
+  background: var(--background-secondary);
+  cursor: pointer;
+  touch-action: none;
+  user-select: none;
+  transition:
+    width 120ms ease,
+    background-color 120ms ease;
+}
+
+.obsidian-minimap:hover {
+  background: var(--background-secondary-alt);
+}
+
+.obsidian-minimap:focus-visible {
+  outline: 2px solid var(--interactive-accent);
+  outline-offset: -2px;
+}
+
+.obsidian-minimap-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.obsidian-minimap-viewport {
+  position: absolute;
+  top: 0;
+  right: 2px;
+  left: 2px;
+  min-height: 18px;
+  border: 1px solid var(--interactive-accent);
+  border-radius: 3px;
+  background: rgba(124, 92, 255, 0.14);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+    0 0 10px rgba(0, 0, 0, 0.08);
+  pointer-events: none;
+  will-change: transform, height;
+}
+
+.obsidian-minimap:hover .obsidian-minimap-viewport {
+  background: rgba(124, 92, 255, 0.22);
+}
+
+.obsidian-minimap[hidden] {
+  display: none;
+}
+
+/* Keep the minimap out of printed notes and PDF exports. */
+@media print {
+  .obsidian-minimap {
+    display: none !important;
+  }
+
+  .cm-editor.obsidian-minimap-enabled > .cm-scroller {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}

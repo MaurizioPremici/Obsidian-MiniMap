@@ -1,0 +1,9 @@
+{
+  "id": "obsidian-minimap-local",
+  "name": "MiniMap",
+  "version": "1.0.1",
+  "minAppVersion": "1.5.0",
+  "description": "Interactive document minimap for the Obsidian desktop editor.",
+  "author": "noShell",
+  "isDesktopOnly": true
+}
